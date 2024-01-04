@@ -2,6 +2,8 @@
 """
 pascal_triangle
 """
+
+
 def pascal_triangle(n):
     """pascal_triangle"""
     if n <= 0:
@@ -9,7 +11,7 @@ def pascal_triangle(n):
 
     result = []
 
-    for i in range(1,n+1):
+    for i in range(1, n+1):
         item = []
         for j in range(i):
             if (j == 0 or j == i - 1):
@@ -20,4 +22,3 @@ def pascal_triangle(n):
         result.append(item)
 
     return (result)
-
