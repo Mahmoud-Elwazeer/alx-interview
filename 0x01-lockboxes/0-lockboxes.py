@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """lockboxes"""
 
+
 def canUnlockAll(boxes):
     for i in range(1, len(boxes)):
         flag = 0
@@ -10,5 +11,5 @@ def canUnlockAll(boxes):
                 break
         if (flag == 0):
             return False
-        
+
     return True
