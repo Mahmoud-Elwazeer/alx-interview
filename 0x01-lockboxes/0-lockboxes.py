@@ -26,7 +26,8 @@ def canUnlockAll(boxes):
 
         # Check the keys in the current box
         for key in boxes[box]:
-            # If the key opens a box and the box hasn't been visited, recursively visit the box
+            # If the key opens a box and the box hasn't been visited,
+            # recursively visit the box
             if key < len(boxes) and key not in visited:
                 dfs(key)
 
@@ -35,4 +36,3 @@ def canUnlockAll(boxes):
 
     # Check if all boxes have been visited
     return len(visited) == len(boxes)
-
