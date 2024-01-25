@@ -7,7 +7,7 @@ def print_stats(size, dict):
     """print specific format"""
     print('File size: {}'.format(size))
     for key, value in dict.items():
-        if value != 0:
+        if value:
             print('{}: {}'.format(key, value))
 
 def main():
@@ -62,8 +62,9 @@ def main():
             except Exception:
                 pass
         print_stats(size, out)
-    except Exception:
-        pass
+    except KeyboardInterrupt:
+        print_stats(size, out)
+        raise
 
 
 if __name__ == '__main__':
