@@ -36,3 +36,5 @@ if __name__ == '__main__':
         print_stats(stats, filesize)
     except KeyboardInterrupt:
         pass
+    except Exception:
+        pass
