@@ -3,14 +3,15 @@
 import sys
 
 
-def print_stats(size, dict):
+def print_stats(size: int, dict: dict) -> None:
     """print specific format"""
     print('File size: {}'.format(size))
     for key, value in dict.items():
         if value:
             print('{}: {}'.format(key, value))
 
-def main():
+
+def main() -> None:
     """main function"""
 
     """initial values"""
