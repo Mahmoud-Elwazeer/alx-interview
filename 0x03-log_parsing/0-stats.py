@@ -1,68 +1,40 @@
 #!/usr/bin/python3
-"""import libraries"""
+"""
+Log parsing
+"""
+
 import sys
 
+if __name__ == '__main__':
 
-def print_stats(size: int, dict: dict) -> None:
-    """print specific format"""
-    print('File size: {:d}'.format(size))
-    for key, value in dict.items():
-        if value:
-            print('{}: {}'.format(key, value))
+    filesize, count = 0, 0
+    codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
+    stats = {k: 0 for k in codes}
 
+    def print_stats(stats: dict, file_size: int) -> None:
+        print("File size: {:d}".format(filesize))
+        for k, v in sorted(stats.items()):
+            if v:
+                print("{}: {}".format(k, v))
 
-def main() -> None:
-    """main function"""
-
-    """initial values"""
-    count = 0
-    size = 0
-    out = {
-        '200': 0,
-        '301': 0,
-        '400': 0,
-        '401': 0,
-        '403': 0,
-        '404': 0,
-        '405': 0,
-        '500': 0
-        }
     try:
         for line in sys.stdin:
             count += 1
-            if count == 11:
-                print_stats(size, out)
-                count = 0
-                size = 0
-                out = {
-                    '200': 0,
-                    '301': 0,
-                    '400': 0,
-                    '401': 0,
-                    '403': 0,
-                    '404': 0,
-                    '405': 0,
-                    '500': 0
-                    }
-
-            """convert data to list to manage"""
             data = line.split()
-
-            """calc size"""
             try:
-                size += int(data[-1])
-            except Exception:
+                status_code = data[-2]
+                if status_code in stats:
+                    stats[status_code] += 1
+            except BaseException:
                 pass
             try:
-                str_status = data[-2]
-                out[str_status] += 1
-            except Exception:
+                filesize += int(data[-1])
+            except BaseException:
                 pass
-        print_stats(size, out)
+            if count % 10 == 0:
+                print_stats(stats, filesize)
+        print_stats(stats, filesize)
     except KeyboardInterrupt:
-        print_stats(size, out)
-        raise
-
-
-if __name__ == '__main__':
-    main()
+        pass
+    except Exception:
+        pass
