@@ -17,7 +17,6 @@ def main() -> None:
     """initial values"""
     count = 0
     size = 0
-    lst = []
     out = {
         '200': 0,
         '301': 0,
@@ -35,7 +34,6 @@ def main() -> None:
                 print_stats(size, out)
                 count = 0
                 size = 0
-                lst = []
                 out = {
                     '200': 0,
                     '301': 0,
@@ -47,8 +45,6 @@ def main() -> None:
                     '500': 0
                     }
 
-            """get data from stdout and read each line"""
-            lst.append(line)
             """convert data to list to manage"""
             data = line.split()
 
