@@ -16,7 +16,7 @@ if __name__ == "__main__":
         if (not isinstance(int(sys.argv[1]), int)):
             print("N must be a number")
             sys.exit(1)
-    except:
+    except Exception:
         print("N must be a number")
         sys.exit(1)
 
