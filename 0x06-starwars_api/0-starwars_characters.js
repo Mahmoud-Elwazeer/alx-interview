@@ -10,7 +10,7 @@ request(url, (error, response, body) => {
 
   const actors = JSON.parse(body).characters;
 
-  async function fetchActors() {
+  async function fetchActors () {
     for (const item of actors) {
       try {
         const response = await getRequest(item);
@@ -21,8 +21,8 @@ request(url, (error, response, body) => {
       }
     }
   }
-  
-  function getRequest(url) {
+
+  function getRequest (url) {
     return new Promise((resolve, reject) => {
       request(url, (error, response, body) => {
         if (error) {
@@ -34,5 +34,5 @@ request(url, (error, response, body) => {
     });
   }
 
-  fetchActors()
+  fetchActors();
 });
