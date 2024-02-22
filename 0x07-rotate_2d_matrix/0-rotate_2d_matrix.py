@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """rotate_2d_matrix
 """
 
@@ -15,4 +15,3 @@ def rotate_2d_matrix(matrix):
     for i in range(n):
         for j in range(n):
             matrix[i][j] = temp[i][j]
-
