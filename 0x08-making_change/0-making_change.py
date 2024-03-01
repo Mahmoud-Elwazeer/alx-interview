@@ -15,7 +15,7 @@ def makeChange(coins, total):
             count += 1
             check += coin
 
-    if check == total or check == 0:
+    if check == total or total < 0:
         return count
     else:
         return -1
