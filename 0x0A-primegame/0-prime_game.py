@@ -14,13 +14,11 @@ def check_prime(n):
     return True
 
 
-def get_prime_numbers(n):
-    """get all prime numbers less than n """
-    lst = [1]
-
-    for i in range(2, n + 1):
-        if (check_prime(i)):
-            lst.append(i)
+def rm_multiples(n, lst):
+    """removing that number and its multiples from the list."""
+    for i in lst:
+        if (i % n == 0):
+            lst.remove(i)
 
     return lst
 
@@ -34,39 +32,36 @@ def isWinner(x, nums):
         return None
     if x != len(nums):
         return None
-
-    player1_out = []
-    player2_out = []
-
+    
+    Maria = 0
+    Ben = 0
     for i in nums:
-        lst = get_prime_numbers(i)
-        lst.sort(reverse=True)
-
-        player1 = i
-        try:
-            lst.remove(player1)
-        except Exception:
-            pass
-
+        lst = list(range(i + 1))
         count = 1
-        for j in lst:
-            if (count % 2 == 0):
-                player1 = j
+
+        while lst != [1]:
+            for i in lst:
+                if(check_prime(i)):
+                    get_n = i
+                    break
+
+            if (count % 2 != 0):
+                rm_maria = rm_multiples(get_n, lst)
+                lst = rm_maria.copy()
             else:
-                player2 = j
+                rm_ben = rm_multiples(get_n, lst)
+                lst = rm_ben.copy()
             count += 1
 
-        if (player1 == 1):
-            player1_out.append(1)
-            player2_out.append(0)
+        if (rm_maria == [1]):
+            Maria += 1
+        elif (rm_ben == [1]):
+            Ben += 1
 
-        elif (player2 == 1):
-            player1_out.append(0)
-            player2_out.append(1)
-
-    if (sum(player1_out) > sum(player2_out)):
-        return 'Maria'
-    elif (sum(player1_out) < sum(player2_out)):
+    if (Maria > Ben):
         return 'Ben'
-
+    elif (Maria < Ben):
+        return 'Maria'
+    
     return None
+
