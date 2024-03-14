@@ -30,6 +30,11 @@ def isWinner(x, nums):
         Maria and Ben are playing a game.
         Assuming Maria always goes first and both players play optimally
     """
+    if x <= 0 or nums is None:
+        return None
+    if x != len(nums):
+        return None
+
     player1_out = []
     player2_out = []
 
