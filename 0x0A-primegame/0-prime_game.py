@@ -38,6 +38,9 @@ def isWinner(x, nums):
     for i in nums:
         lst = list(range(i + 1))
         count = 1
+        if ( i == 1 or i == 2):
+            Ben += 1
+            break
 
         while lst != [1]:
             for i in lst:
