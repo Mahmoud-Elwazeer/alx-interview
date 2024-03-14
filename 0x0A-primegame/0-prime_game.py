@@ -32,19 +32,19 @@ def isWinner(x, nums):
         return None
     if x != len(nums):
         return None
-    
+
     Maria = 0
     Ben = 0
     for i in nums:
         lst = list(range(i + 1))
         count = 1
-        if ( i == 1 or i == 2):
+        if (i == 1 or i == 2):
             Ben += 1
             break
 
         while lst != [1]:
             for i in lst:
-                if(check_prime(i)):
+                if (check_prime(i)):
                     get_n = i
                     break
 
@@ -65,6 +65,5 @@ def isWinner(x, nums):
         return 'Maria'
     elif (Maria < Ben):
         return 'Ben'
-    
-    return None
 
+    return None
