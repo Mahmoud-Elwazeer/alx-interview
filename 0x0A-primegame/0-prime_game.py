@@ -32,9 +32,9 @@ def isWinner(x, nums):
         return None
     if x != len(nums):
         return None
-
     Maria = 0
     Ben = 0
+    get_n = None
     for i in nums:
         lst = list(range(i + 1))
         count = 1
@@ -47,6 +47,9 @@ def isWinner(x, nums):
                 if (check_prime(i)):
                     get_n = i
                     break
+
+            if get_n is None:
+                break
 
             if (count % 2 != 0):
                 rm_maria = rm_multiples(get_n, lst)
